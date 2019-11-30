@@ -24,17 +24,27 @@ var api = "webapi/offer/getoffers";
 $.get(api, function (offers, status) {
     if (status == "success") {
         var offer_data_body = "";
-        console.log(offers);
+        console.log(offers[1].specialisation[0].name);
         for (var i = 0; i < offers.length; i++) {
+            var d = "";
+            var s= "";
+            if(offers[i].domain[0]!= null) {
+                d = offers[i].domain[0].name
+            }
+            if(offers[i].specialisation[0]!= null) {
+                s = offers[i].specialisation[0].name 
+            }
+            console.log(d);
+            console.log(s);
             //var domainName = of[i].domain.discipline + " " + student[i].domain.branch;
             //var photograph = '<img src="' + student[i].photograph + '" height="80" alt="' + student[i].rollNumber + '">'
             offer_data_body += '<tr>'
                 + '<td>' + i + 1 + '</td>'
                 + '<td>' + offers[i].organisation + '</td>'
-                + '<td>' + offers[i].domainName + '</td>'
+                + '<td>' + d+ '</td>'
                 + '<td>' + offers[i].min_grade + '</td>'
                 + '<td>' + offers[i].max_intake + '</td>'
-                + '<td>' + offers[i].specsName + '</td>';
+                + '<td>' + s + '</td>';
         }
         $('#student_data tbody').html(offer_data_body);
     }

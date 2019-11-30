@@ -18,12 +18,10 @@ public class Offer {
     private String organisation;
     private Character min_grade;
     private Integer max_intake;
-    private String domainName;
-    private String specsName;
-    @JsonIgnore
+
     @ManyToMany(cascade=CascadeType.ALL)
     private List<Specialisation> specialisation = new ArrayList();
-    @JsonIgnore
+
     @ManyToMany(cascade=CascadeType.ALL)
     private List<Domain> domain = new ArrayList();
     //private String jd_url;
@@ -63,20 +61,8 @@ public class Offer {
     }
     public String getDomainName(int i){ return getDomain().get(i).getName();}
     public String getSpecialisationName(int i){ return getSpecialisation().get(i).getName();}
-    public String getDomainName() {
-        return domainName;
-    }
-    public void setDomainName(String domainName) {
-        this.domainName = domainName;
-    }
 
-    public String getSpecsName() {
-        return specsName;
-    }
 
-    public void setSpecsName(String specsName) {
-        this.specsName = specsName;
-    }
 
     /*public String getJd_url() {
             return jd_url;

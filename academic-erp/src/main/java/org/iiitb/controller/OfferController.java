@@ -65,17 +65,8 @@ public class OfferController {
         System.out.println(offerList);
         if (offerList == null)
             return Response.noContent().build();
-        List<Offer> edditedList = new ArrayList();
-        for(int i = 0; i< offerList.size(); i++){
-            Offer offer = new Offer();
-            offer.setOrganisation(offerList.get(i).getOrganisation());
-            offer.setSpecsName(offerList.get(i).getSpecialisation().get(0).getName());
-            offer.setDomainName(offerList.get(i).getDomain().get(0).getName());
-            offer.setMin_grade(offerList.get(i).getMin_grade());
-            offer.setMax_intake(offerList.get(i).getMax_intake());
-            edditedList.add(offer);
-        }
-        return Response.ok().entity(edditedList).build();
+
+        return Response.ok().entity(offerList).build();
     }
 
 }
